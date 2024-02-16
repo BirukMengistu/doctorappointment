@@ -23,7 +23,7 @@ function Hero() {
               <h2 className="text-3xl font-bold sm:text-4xl">
                 Find & Book  
                  {' '}<span className="text-primary"> Appointment</span> {' '}
-                your favourite <span className="text-primary">Doctor</span> 
+                your favourite <span className="text-primary">Doctors</span> 
               </h2>
 
               <p className="mt-4 text-gray-600">
