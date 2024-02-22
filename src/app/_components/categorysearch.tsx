@@ -5,12 +5,17 @@ import { Search } from 'lucide-react'
 import React, { useEffect,useState } from 'react'
 import GlobalApi from '../_utils/GlobalApi'
 import Image from 'next/image'
+import Link from 'next/link'
 
 function CategorySearch() {
     const [categoryList, setCategoryList] = useState([]);
-    
+    const [loading, setLoading] = useState(true);
     useEffect(()=>{
-        getCategoryList()
+        
+        setTimeout(() => {
+            getCategoryList()
+            setLoading(false)
+           }, 2000)
     },[])
     const getCategoryList=()=>{
         GlobalApi.getCategory().then((response)=>setCategoryList(response.data.data))
@@ -32,14 +37,16 @@ function CategorySearch() {
          <Input type='text' placeholder='search' />
            <Button type='submit'>
             <Search className='w-4 h-4 mx-2'/>
-            Search</Button>
+            Search
+            </Button>
          </div>
          {/* Display List of Category */}
          
-            <div className='grid grid-col-3 md:grid-cols-4 lg:grid-cols-5'>
-            {categoryList && categoryList.map(
+            <div className='grid grid-cols-3 md:grid-cols-4 lg:grid-cols-5'>
+            {!loading ? categoryList.map(
                 (item, index)=>(
-                    <div key={index}
+                    <Link href={`/search/${item?.attributes.name}`}
+                    key={index}
                     className='flex flex-col text-center items-center
                     p-5 bg-blue-200 m-2 
                     rounded-md gap-2 cursor-pointer
@@ -53,9 +60,15 @@ function CategorySearch() {
                         className='text-primary'/>
                         <label 
                         className='text-primary '>{item?.attributes.name}</label>
-                    </div>
+                    </Link>
                 )
-            )
+            ):
+            [1,2,3,4,6,7].map((item,index)=>(
+                <div key={index}
+                className='h-[60px] bg-blue-200 w-[100px] m-3 gap-2 rounded-lg animate-pulse'>
+      
+                 </div>
+              ))
         }
             </div>
         

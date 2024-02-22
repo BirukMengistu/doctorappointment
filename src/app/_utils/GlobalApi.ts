@@ -12,7 +12,17 @@ const getCategory=()=>{
 const response =axiosClient.get('/categories/?populate=*')
 return response
 }
+const getDoctors=()=>{
+    const response =axiosClient.get('/doctors/?populate=*')
+    return response
+    }
+    const getDoctorByCategory=(category:string)=>{
+        const response =axiosClient.get('/doctors/?filters[category][name][$in]='+category+'&populate=*')
+        return response
+        }
 // eslint-disable-next-line import/no-anonymous-default-export
 export default {
-    getCategory
+    getCategory,
+    getDoctors,
+    getDoctorByCategory
 }
