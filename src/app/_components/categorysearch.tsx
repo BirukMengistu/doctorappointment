@@ -20,7 +20,7 @@ function CategorySearch() {
     const getCategoryList=()=>{
         GlobalApi.getCategory().then((response)=>setCategoryList(response.data.data))
     }
-    const cloudinaryImageLoader = ({ src }) => {
+    const cloudinaryImageLoader = ({ src }:any) => {
         return `${src}`;
       };
   return (
@@ -44,7 +44,7 @@ function CategorySearch() {
          
             <div className='grid grid-cols-3 md:grid-cols-4 lg:grid-cols-5'>
             {!loading ? categoryList.map(
-                (item, index)=>(
+                (item:any, index)=>(
                     <Link href={`/search/${item?.attributes.name}`}
                     key={index}
                     className='flex flex-col text-center items-center
@@ -52,6 +52,7 @@ function CategorySearch() {
                     rounded-md gap-2 cursor-pointer
                     hover:scale-110 transition-all ease-in-out'>
                         <Image 
+                        unoptimized={true} 
                         loader={cloudinaryImageLoader}
                         src={item?.attributes?.icon?.data?.attributes.url} 
                         alt='Icon'

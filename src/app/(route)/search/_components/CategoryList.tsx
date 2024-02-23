@@ -28,7 +28,7 @@ function CategoryList({}:CategoryListProps) {
       <CommandList className='overflow-visible'>
         <CommandEmpty>No results found.</CommandEmpty>
         <CommandGroup heading="Suggestions">
-          {categoryList && categoryList.map((item,index)=>
+          {categoryList && categoryList.map((item:any,index)=>
             <CommandItem key={index}>
              <Link href={`/search/${item?.attributes?.name}`} 
                 className={cn('p-2 flex w-full flex-row gap-2 items-center  text-primary rounded cursor-pointer',
@@ -37,7 +37,8 @@ function CategoryList({}:CategoryListProps) {
                      <Image src={item?.attributes?.icon?.data?.attributes.url}
                      alt='icon'
                      width={25}
-                     height={25} />
+                     height={25}
+                     unoptimized={true}  />
                     <label>
                     {item?.attributes.name}
                     </label>

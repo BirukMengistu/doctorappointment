@@ -1,6 +1,7 @@
 'use client'
 import React, { useState,useEffect } from 'react'
 import Image from 'next/image';
+import Link from 'next/link';
 type DoctorlistProp={
   doctorList:any,
   heading:string,
@@ -28,6 +29,7 @@ function DoctorList({doctorList,loading,heading='Popular Doctors'}:DoctorlistPro
               alt='pic-dr'
               width={500}
               height={200}
+              unoptimized={true} 
               className='h-[200px] w-full object-contain rounded-lg '/>
              <div className='mt-3 items-baseline
               flex flex-col'>
@@ -36,13 +38,15 @@ function DoctorList({doctorList,loading,heading='Popular Doctors'}:DoctorlistPro
              </div>
              <h2 className='text-[10px] font-bold '>Dr.{' '}{doctor.attributes.name}</h2>
              <h2 className='text-[10px]  font-bold text-blue-200 '>{doctor.attributes.Years_of_Experiance} years</h2>
-             
+             <Link href={`/details/${doctor?.id}`}>
              <h2 className='mb-2 p-2 mt-p px-3  border-[1px]
               border-primary text-primary rounded-lg
               w-full text-center cursor-pointer
                hover:bg-primary
                hover:text-white' 
              >Book Now</h2>
+             </Link>
+             
             </div>)
         ):
         [1,2,3,4,6,7].map((item,index)=>(

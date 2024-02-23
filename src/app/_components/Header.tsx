@@ -57,9 +57,10 @@ export default function Header() {
       <Popover>
         <PopoverTrigger>
         <Image src={`${user?.picture}`} alt='profile-pic'
-      width={30}
-      height={30}
-      className="rounded-full"/>
+          unoptimized={true} 
+        width={30}
+        height={30}
+       className="h-auto rounded-full"/>
         </PopoverTrigger>
         <PopoverContent className="w-44">
           <ul className="flex flex-col gap-2 ">

@@ -20,9 +20,20 @@ const getDoctors=()=>{
         const response =axiosClient.get('/doctors/?filters[category][name][$in]='+category+'&populate=*')
         return response
         }
+
+  ///api/doctors/:id
+
+    
+
+
+const getDoctorById =(id:any)=>{
+    const response = axiosClient.get('/doctors/'+id+'/?populate=*')
+        return response
+}
 // eslint-disable-next-line import/no-anonymous-default-export
 export default {
     getCategory,
     getDoctors,
-    getDoctorByCategory
+    getDoctorByCategory,
+    getDoctorById
 }

@@ -10,7 +10,8 @@ function Footer() {
       <Image src={'/logo.svg'}
        width={90}
        height={90}
-       alt='logo'/>
+       alt='logo'
+       className=" rounded-lg"/>
     </div>
 
     <p className="mx-auto mt-6 max-w-md text-center leading-relaxed text-gray-500">
